@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 
 export default function AuthProvider({ children }) {
-  const loadUser = useAuthStore((state) => state.loadUser);
+  const initAuth = useAuthStore((state) => state.initAuth);
 
   useEffect(() => {
-    loadUser();
-  }, []);
+    initAuth();
+  }, [initAuth]);
 
   return children;
 }
