@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Suspense } from "react";
 import SearchBar from "./SearchBar";
 
 export default function LandingHero() {
@@ -16,7 +17,9 @@ export default function LandingHero() {
       </div>
 
       {/* 🔍 Reusable Airbnb-Style Centered Glassmorphic Search Bar */}
-      <SearchBar className="mt-2" />
+      <Suspense fallback={<div className="h-20 w-full max-w-4xl bg-white/5 animate-pulse rounded-full" />}>
+        <SearchBar className="mt-2" />
+      </Suspense>
 
       {/* Hero Center Heading added below Search Bar */}
       <motion.div 
