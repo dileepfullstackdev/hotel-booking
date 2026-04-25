@@ -1,3 +1,4 @@
+"use client";
 import { ShieldAlert, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 
