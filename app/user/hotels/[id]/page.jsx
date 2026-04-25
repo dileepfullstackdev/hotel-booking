@@ -22,6 +22,20 @@ import {
 } from "@heroui/react";
 import {today, getLocalTimeZone, parseDate, isSameDay} from "@internationalized/date";
 
+const amenityIcons = {
+  wifi: <Wifi size={20} />,
+  parking: <Car size={20} />,
+  kitchen: <Utensils size={20} />,
+  tv: <Tv size={20} />,
+  gym: <Dumbbell size={20} />,
+  pool: <Waves size={20} />,
+  ac: <Wind size={20} />,
+  washer: <Wind size={20} />, // Fallback icon
+  iron: <Wind size={20} />, // Fallback icon
+  hairdryer: <Wind size={20} />, // Fallback icon
+  bathroom: <DoorOpen size={20} />,
+};
+
 export default function HotelDetails() {
   const { id } = useParams();
   const router = useRouter();
