@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, ChevronLeft, ChevronRight, Star, Info, ShieldCheck, X, Loader2 } from "lucide-react";
 import { Avatar, Button } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import RoleProtectedRoute from "@/components/RoleProtectedRoute";
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   
@@ -463,5 +463,17 @@ export default function CheckoutPage() {
       </div>
     )}
   </RoleProtectedRoute>
-);
+    );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white">
+        <Loader2 className="animate-spin text-white/50" size={32} />
+      </div>
+    }>
+      <CheckoutContent />
+    </Suspense>
+  );
 }
