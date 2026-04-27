@@ -4,8 +4,10 @@ import { useParams, useRouter } from "next/navigation";
 import RoleProtectedRoute from "@/components/RoleProtectedRoute";
 import { Card, Button } from "@heroui/react";
 import { useState } from "react";
+import { useToast } from "@/components/Toast";
 
 export default function AdminHotelDetails() {
+  const { addToast } = useToast();
   const { id } = useParams();
   const router = useRouter();
 
@@ -40,7 +42,7 @@ export default function AdminHotelDetails() {
     const confirmDelete = confirm("Delete this hotel?");
     if (!confirmDelete) return;
 
-    alert("Hotel deleted (mock)");
+    addToast("Hotel deleted successfully", "success");
     router.push("/admin/manage-hotels");
   };
 

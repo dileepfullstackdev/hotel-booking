@@ -14,7 +14,10 @@ import {
 } from "@heroui/react";
 import RoleProtectedRoute from "@/components/RoleProtectedRoute";
 
+import { useToast } from "@/components/Toast";
+
 export default function AddHotel() {
+  const { addToast } = useToast();
   const router = useRouter();
 
   const {
@@ -46,7 +49,7 @@ export default function AddHotel() {
 
     console.log("New Hotel:", newHotel);
 
-    alert("Hotel added successfully (mock)");
+    addToast("Hotel added successfully", "success");
     router.push("/owner/my-hotels");
   };
 

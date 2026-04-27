@@ -21,6 +21,7 @@ import {
   Calendar
 } from "@heroui/react";
 import {today, getLocalTimeZone, parseDate, isSameDay} from "@internationalized/date";
+import { useToast } from "@/components/Toast";
 
 const amenityIcons = {
   wifi: <Wifi size={20} />,
@@ -37,6 +38,7 @@ const amenityIcons = {
 };
 
 export default function HotelDetails() {
+  const { addToast } = useToast();
   const { id } = useParams();
   const router = useRouter();
   const [hotel, setHotel] = useState(null);
@@ -156,7 +158,7 @@ export default function HotelDetails() {
         }
 
         if (rangeHasBlockedDate) {
-          alert("Your selection includes already booked dates. Please select a different range.");
+          addToast("Your selection includes already booked dates. Please select a different range.", "error");
           return;
         }
 

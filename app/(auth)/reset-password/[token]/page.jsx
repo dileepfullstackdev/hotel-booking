@@ -2,12 +2,14 @@
 import PublicRoute from "../../../../components/PublicRoute";
 import { useForm } from "react-hook-form";
 import { Input, Button } from "@heroui/react";
+import { useToast } from "@/components/Toast";
 import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Lock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function ResetPassword() {
+  const { addToast } = useToast();
   const router = useRouter();
   const params = useParams();
   const token = params.token;
@@ -16,7 +18,7 @@ export default function ResetPassword() {
   const password = watch("password");
 
   const onSubmit = async (data) => {
-    alert("Password reset successful (mock)");
+    addToast("Password reset successful", "success");
     router.push("/login");
   };
 

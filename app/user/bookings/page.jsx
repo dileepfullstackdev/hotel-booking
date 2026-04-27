@@ -4,8 +4,10 @@ import { useState } from "react";
 import RoleProtectedRoute from "@/components/RoleProtectedRoute";
 import { motion } from "framer-motion";
 import { MapPin, CalendarDays, Users, CreditCard, TicketCheck, X, Compass } from "lucide-react";
+import { useToast } from "@/components/Toast";
 
 export default function MyBookings() {
+  const { addToast } = useToast();
   // 🔥 Mock bookings (later from backend)
   const [bookings, setBookings] = useState([
     {
@@ -36,6 +38,7 @@ export default function MyBookings() {
     if (!confirmCancel) return;
 
     setBookings((prev) => prev.filter((b) => b.id !== id));
+    addToast("Booking cancelled successfully", "success");
   };
 
   return (
